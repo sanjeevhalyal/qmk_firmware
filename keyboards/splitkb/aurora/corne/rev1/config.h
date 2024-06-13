@@ -25,3 +25,4 @@
 #    define OLED_DISPLAY_128X32
 #    define SPLIT_OLED_ENABLE
 #endif
+#define ENABLE_COMPILE_KEYCODE

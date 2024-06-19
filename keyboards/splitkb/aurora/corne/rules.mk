@@ -17,3 +17,5 @@ DEFAULT_FOLDER = splitkb/aurora/corne/rev1
 CONVERT_TO=liatris
 TAP_DANCE_ENABLE = yes
 CAPS_WORD_ENABLE = yes
+# CONSOLE_ENABLE = yes
+# RGB_MATRIX_ENABLE = yes

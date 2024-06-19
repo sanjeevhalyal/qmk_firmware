@@ -11,6 +11,39 @@ enum layers { _BASE, _FIRST, _SECOND, _THIRD };
 
 enum { TD_ESC_CAPS };
 
+enum custom_keycodes {
+    FIREFOX = SAFE_RANGE, // SAFE_RANGE prevents it from using a clashing keycode
+	ITERM
+
+};
+
+void open_application(const char* app) {
+    char buffer[100]; // Adjust the size as needed
+    snprintf(buffer, sizeof(buffer), SS_LGUI(" ") SS_DELAY(100) "%s" SS_DELAY(500) SS_TAP(X_ENT), app);
+    send_string(buffer);
+}
+
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case FIREFOX:
+            if (record->event.pressed) {
+                open_application("firefox");
+            } 
+            break;
+		case ITERM:
+			if (record->event.pressed) {
+                open_application("iterm");
+            } 
+            break;
+		default:
+			break;
+
+
+    }
+    return true;
+}
+
 // Tap Dance definitions
 tap_dance_action_t tap_dance_actions[] = {
     // Tap once for Escape, twice for Caps Lock
@@ -32,9 +65,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {[_BASE] = LAYOUT_s
                                                                   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
                                                                   KC_TAB, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_BSPC,
                                                                   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-                                                                  KC_LCTL, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX, XXXXXXX, KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT, XXXXXXX,
+                                                                  KC_LCTL, KC_LGUI, KC_LALT, KC_LCTL, FIREFOX, XXXXXXX, XXXXXXX, KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT, XXXXXXX,
                                                                   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-                                                                  KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+                                                                  KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, ITERM, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
 
                                                                   KC_LGUI, _______, KC_SPC, KC_ENT, MO(3), KC_RALT
                                                                   //`--------------------------'  				`--------------------------'

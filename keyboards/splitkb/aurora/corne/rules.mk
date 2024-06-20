@@ -14,3 +14,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 DEFAULT_FOLDER = splitkb/aurora/corne/rev1
+CONVERT_TO=liatris
+TAP_DANCE_ENABLE = yes
+CAPS_WORD_ENABLE = yes
+# CONSOLE_ENABLE = yes
+# RGB_MATRIX_ENABLE = yes

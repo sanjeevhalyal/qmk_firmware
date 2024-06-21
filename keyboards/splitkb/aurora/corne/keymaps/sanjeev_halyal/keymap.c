@@ -179,17 +179,19 @@ void f_no_row(uint8_t index, uint8_t layer) {
 }
 void f_row(uint8_t layer) {
     for (uint8_t index = 6; index < 27; index++) {
-        if (keymap_key_to_keycode(layer, (keypos_t){matrixMap[index].y, matrixMap[index].x}) > KC_NO) {
-            rgb_matrix_set_color(index, RGB_GREEN);
+        if (keymap_key_to_keycode(layer, (keypos_t){matrixMap[index].y, matrixMap[index].x}) > KC_TRNS) {
+            rgb_matrix_set_color(index, RGB_CORAL);
         } else {
-            f_no_row(index, layer);
+            // f_no_row(index, layer);
+            rgb_matrix_set_color(index, RGB_BLACK);
         }
     }
     for (uint8_t index = 33; index < 54; index++) {
-        if (keymap_key_to_keycode(layer, (keypos_t){matrixMap[index].y, matrixMap[index].x}) > KC_NO) {
-            rgb_matrix_set_color(index, RGB_GREEN);
+        if (keymap_key_to_keycode(layer, (keypos_t){matrixMap[index].y, matrixMap[index].x}) > KC_TRNS) {
+            rgb_matrix_set_color(index, RGB_CORAL);
         } else {
-            f_no_row(index, layer);
+            // f_no_row(index, layer);
+            rgb_matrix_set_color(index, RGB_BLACK);
         }
     }
 }
